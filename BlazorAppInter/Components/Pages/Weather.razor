@@ -2,9 +2,9 @@
 
 <PageTitle>Weather</PageTitle>
 
-<h1>Weather</h1>
+<h1>Previsioni del tempo</h1>
 
-<p>This component demonstrates showing data.</p>
+<p>Carica di dati da un web api RESTful</p>
 
 @if (forecasts == null)
 {
@@ -20,7 +20,8 @@ else
                 <th>Temp. (F)</th>
                 <th>Summary</th>
             </tr>
-        </thead>
+        </thead>      
+
         <tbody>
             @foreach (var forecast in forecasts)
             {
@@ -33,18 +34,38 @@ else
             }
         </tbody>
     </table>
+    <p>Solista: @solista.Name id: @solista.IdArtist</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Identificativo</th>
+                <th>Nome</th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artist in artists)
+            {
+                <tr>
+                    <td>@artist.IdArtist</td>
+                    <td>@artist.Name</td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @code {
     private WeatherForecast[]? forecasts;
-
+    private Artist[]? artists;
+    Artist? solista;
     protected override async Task OnInitializedAsync()
     {
-        // Simulate asynchronous loading to demonstrate a loading indicator
-        await Task.Delay(500);
+        
         HttpClient? cl = new HttpClient();
         cl.BaseAddress = new Uri("http://localhost:5140");        
         forecasts = await cl.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        artists = await cl.GetFromJsonAsync<Artist[]>("Artist/ArtistsList");
+        solista = await cl.GetFromJsonAsync<Artist>("Artist/5");
         
     }
 
