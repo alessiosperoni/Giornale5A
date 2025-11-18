@@ -8,7 +8,7 @@ namespace WebApplicationApi.Controllers
     [Route("[controller]")]
     public class ArtistController : ControllerBase
     {
-       
+        
         private readonly ILogger<ArtistController> _logger;
 
         public ArtistController(ILogger<ArtistController> logger)
@@ -21,7 +21,8 @@ namespace WebApplicationApi.Controllers
         {
 
             //IArtistRepository c = new ArtistRepositorySqlite();
-            IArtistRepository c = new ArtistRepositoryJson();
+            //IArtistRepository c = new ArtistRepositoryJson();
+            IArtistRepository c = new ArtistRepositoryXml();
             return c.GetArtist(id);
 
         }
@@ -30,7 +31,8 @@ namespace WebApplicationApi.Controllers
         public IEnumerable<Artist> Get()
         {
             //IArtistRepository c = new ArtistRepositorySqlite();
-            IArtistRepository c = new ArtistRepositoryJson();
+            //IArtistRepository c = new ArtistRepositoryJson();
+            IArtistRepository c = new ArtistRepositoryXml();
             return c.GetArtistsList().ToList();
 
         }

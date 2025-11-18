@@ -65,7 +65,7 @@ else
         cl.BaseAddress = new Uri("http://localhost:5140");        
         forecasts = await cl.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
         artists = await cl.GetFromJsonAsync<Artist[]>("Artist/ArtistsList");
-        solista = await cl.GetFromJsonAsync<Artist>("Artist/5");
+        solista = await cl.GetFromJsonAsync<Artist>("Artist/2");
         
     }
 
