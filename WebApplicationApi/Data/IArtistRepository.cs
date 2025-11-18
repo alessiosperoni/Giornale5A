@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApplicationApi.Data
 {
-    interface IArtistRepository
+    public interface IArtistRepository
     {
         /// <summary>
         /// look for the artist with that id

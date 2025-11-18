@@ -8,32 +8,29 @@ namespace WebApplicationApi.Controllers
     [Route("[controller]")]
     public class ArtistController : ControllerBase
     {
-        
-        private readonly ILogger<ArtistController> _logger;
 
-        public ArtistController(ILogger<ArtistController> logger)
+        private readonly ILogger<ArtistController> _logger;
+        private readonly IArtistRepository? _repository;
+        public ArtistController(ILogger<ArtistController> logger,IArtistRepository? repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         [HttpGet("{id}")]
         public Artist Get(int id)
         {
 
-            //IArtistRepository c = new ArtistRepositorySqlite();
-            //IArtistRepository c = new ArtistRepositoryJson();
-            IArtistRepository c = new ArtistRepositoryXml();
-            return c.GetArtist(id);
+            
+            return _repository.GetArtist(id);
 
         }
 
         [HttpGet("ArtistsList")]
         public IEnumerable<Artist> Get()
         {
-            //IArtistRepository c = new ArtistRepositorySqlite();
-            //IArtistRepository c = new ArtistRepositoryJson();
-            IArtistRepository c = new ArtistRepositoryXml();
-            return c.GetArtistsList().ToList();
+            
+            return _repository.GetArtistsList().ToList();
 
         }
     }
