@@ -1,3 +1,4 @@
+using BlazorIjectionValidation.Data;
 using WebApplicationApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,7 @@ builder.Services.AddControllers();
 
 // Registrazione del repository: scegli l'implementazione desiderata
 // Lifetime consigliato per Web API: Scoped (una istanza per request)
-builder.Services.AddSingleton<IArtistRepository, ArtistRepositoryJson>();
+builder.Services.AddSingleton<IArtistRepository, ArtistRepositoryMySql>();
 
 // Add CORS policy (development). Replace origins with your Blazor app URL for production.
 builder.Services.AddCors(options =>
