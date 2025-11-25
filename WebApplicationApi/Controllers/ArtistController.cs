@@ -33,5 +33,12 @@ namespace WebApplicationApi.Controllers
             return _repository.GetArtistsList().ToList();
 
         }
+
+        [HttpPost("{Name}")]
+        public Artist Put(string Name)
+        {
+            return _repository.CreateArtist(Name);
+        }
+
     }
 }

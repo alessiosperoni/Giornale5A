@@ -46,7 +46,7 @@ namespace BlazorIjectionValidation.Data
             myConnection.Open();
             myCommand.ExecuteNonQuery();
 
-            // Recupero dell'ID appena inserito da testare!!!
+            // Recupero dell'ID appena inserito da testare è farina di Copilot!!!
             long idArtist = myCommand.LastInsertedId;
             newArtist.IdArtist = (int)idArtist;
 
