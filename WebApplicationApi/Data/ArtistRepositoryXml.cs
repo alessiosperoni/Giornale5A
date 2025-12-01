@@ -80,8 +80,7 @@ namespace WebApplicationApi.Data
                 try
                 {
                     var doc = XDocument.Load(DataSourcePath);
-                    var artists = doc.Root?
-                        .Elements("artist")
+                    var artists = doc.Root?.Elements("artist")
                         .Select(e => new Artist
                         {
                             IdArtist = int.TryParse((string?)e.Element("IdArtist"), out var id) ? id : 0,
