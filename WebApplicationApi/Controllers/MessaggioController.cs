@@ -36,7 +36,7 @@ namespace WebApplicationApi.Controllers
 
         }
 
-        [HttpPost("{Name}")]
+        [HttpPost("{Mittente},{Destinatario},{Testo}")]
         public Messaggio Put(string Mittente, string Destinatario, string Testo)
         {
             return _repository.CreateMessaggio(Mittente, Destinatario, Testo);
