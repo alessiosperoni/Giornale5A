@@ -28,7 +28,12 @@ namespace WebApplicationApi.Data
         /// Lista di tutti i messaggi
         /// </summary>
         /// <returns>Lista di messaggi</returns>
-        List<Messaggio> GetMessaggiList();
+        List<Messaggio> GetMessaggiosList();
+        /// <summary>
+        /// Lista di tutti i messaggi
+        /// </summary>
+        /// <returns>Lista di messaggi</returns>
+        List<Messaggio> GetListaMessaggi();
 
     }
 }

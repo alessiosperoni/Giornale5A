@@ -19,7 +19,7 @@ namespace WebApplicationApi.Controllers
             _repository = repository;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("messaggi/{id}")]
         public Messaggio Get(int id)
         {
 
@@ -28,11 +28,11 @@ namespace WebApplicationApi.Controllers
 
         }
 
-        [HttpGet("ListaMessaggi")]
+        [HttpGet("MessaggiosList")]
         public IEnumerable<Messaggio> Get()
         {
             
-            return _repository.GetMessaggiList().ToList();
+            return _repository.GetMessaggiosList().ToList();
 
         }
 
@@ -48,7 +48,7 @@ namespace WebApplicationApi.Controllers
             if (_repository == null)
                 return NotFound("Repository non configurato");
 
-            var list = _repository.GetMessaggiList();
+            var list = _repository.GetListaMessaggi();
             var options = new JsonSerializerOptions { WriteIndented = true };
             var json = JsonSerializer.Serialize(list, options);
             var bytes = Encoding.UTF8.GetBytes(json);

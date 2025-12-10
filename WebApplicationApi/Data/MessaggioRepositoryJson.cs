@@ -13,7 +13,7 @@ namespace WebApplicationApi.Data
         private string dataSourceString = @"Data/Source/Messaggi.json";
         public Messaggio CreateMessaggio(string Mittente, string Destinatario, string Testo)
         {
-            List<Messaggio> myList = GetMessaggiList();
+            List<Messaggio> myList = GetMessaggiosList();
             Messaggio ultimo = myList.Last<Messaggio>();
             Messaggio newMessaggio = new Messaggio();
             newMessaggio.Mittente = Mittente;
@@ -33,12 +33,20 @@ namespace WebApplicationApi.Data
 
         public Messaggio GetMessaggio(int Id)
         {
-            List<Messaggio> myList = GetMessaggiList();
+            List<Messaggio> myList = GetMessaggiosList();
             return myList.Find(x => x.IdMessaggio == Id);
 
         }
 
-        public List<Messaggio> GetMessaggiList()
+        public List<Messaggio> GetListaMessaggi()
+        {           
+            JsonSerializer mySerializer = new JsonSerializer();
+            StreamReader myStreamreader = File.OpenText(dataSourceString);
+            List <Messaggio> myList = (List < Messaggio>)mySerializer.Deserialize(myStreamreader, typeof(List<Messaggio>));
+            myStreamreader.Close();
+            return myList;
+        }
+        public List<Messaggio> GetMessaggiosList()
         {           
             JsonSerializer mySerializer = new JsonSerializer();
             StreamReader myStreamreader = File.OpenText(dataSourceString);
