@@ -1,0 +1,14 @@
+[
+  {
+    "IdPubblicita": 1,
+    "azienda": "Shattered",
+    "link": "https://shatteredpixel.com/shatteredpd/",
+    "Prodotto": "Il migliore videogioco mai creato"
+  },
+  {
+    "IdPubblicita": 2,
+    "azienda": "Nessuna",
+    "link": "https://gabrielx24.itch.io/untitled-demo/",
+    "Prodotto": "Il secondo migliore videogioco mai creato"
+  }
+]

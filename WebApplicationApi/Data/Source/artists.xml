@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<artists>
+	<artist>
+		<IdArtist>1</IdArtist>
+		<Name>Alessio</Name>
+	</artist>
+	<artist>
+		<IdArtist>2</IdArtist>
+		<Name>Mario</Name>
+	</artist>
+	<artist>
+		<IdArtist>3</IdArtist>
+		<Name>Fisio</Name>
+	</artist>
+	<artist>
+		<IdArtist>4</IdArtist>
+		<Name>Gnazzio</Name>
+	</artist>
+</artists>

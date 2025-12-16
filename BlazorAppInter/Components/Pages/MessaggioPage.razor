@@ -1,0 +1,52 @@
+﻿@page "/messaggio"
+
+<PageTitle>Messaggi</PageTitle>
+
+<h1>Elenco dei messaggi</h1>
+
+<p>Carica di dati da un web api RESTful</p>
+
+@if (listaMessaggi == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>Messaggio: @singoloMessaggio.Mittente id: @singoloMessaggio.IdMessaggio</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id messaggio</th>
+                <th>Mittente</th>
+                <th>Destinatario</th>
+                <th>Testo del messaggio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in listaMessaggi)
+            {
+                <tr>
+                    <td>@m.IdMessaggio</td>
+                    <td>@m.Mittente</td>
+                    <td>@m.Destinatario</td>
+                    <td>@m.Testo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private Messaggio[]? listaMessaggi;
+    Messaggio? singoloMessaggio;
+    protected override async Task OnInitializedAsync()
+    {        
+        HttpClient? cl = new HttpClient();
+        //cl.BaseAddress = new Uri("http://localhost:5140");
+        cl.BaseAddress = new Uri("http://localhost:8081");
+        //cl.BaseAddress = new Uri("http://localhost:3000");
+        singoloMessaggio = await cl.GetFromJsonAsync<Messaggio>("Messaggio/messaggi/2");
+        listaMessaggi = await cl.GetFromJsonAsync<Messaggio[]>("Messaggio/MessaggiosList");
+    }
+}

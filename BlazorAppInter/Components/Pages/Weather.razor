@@ -1,0 +1,73 @@
+﻿@page "/weather"
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Previsioni del tempo</h1>
+
+<p>Carica di dati da un web api RESTful</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>Solista: @solista.Name id: @solista.IdArtist</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Identificativo</th>
+                <th>Nome</th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artist in artists)
+            {
+                <tr>
+                    <td>@artist.IdArtist</td>
+                    <td>@artist.Name</td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WeatherForecast[]? forecasts;
+    private Artist[]? artists;
+    Artist? solista;
+    protected override async Task OnInitializedAsync()
+    {
+        
+        HttpClient? cl = new HttpClient();
+        cl.BaseAddress = new Uri("http://localhost:5140");        
+        forecasts = await cl.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        artists = await cl.GetFromJsonAsync<Artist[]>("Artist/ArtistsList");
+        solista = await cl.GetFromJsonAsync<Artist>("Artist/2");
+        
+    }
+
+   
+}
