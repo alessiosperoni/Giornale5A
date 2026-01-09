@@ -1,0 +1,16 @@
+[
+  {
+    "idCommento": 1,
+    "autoreCommento": "Luca",
+    "testoCommento": "Lautaro deve schiattare",
+    "dataCommento": "2024-05-01 10:15:30",
+    "idArticolo": 1,
+  },
+  {
+    "idCommento": 2,
+    "autoreCommento": "Luca",
+    "testoCommento": "Lautaro deve schiattare",
+    "dataCommento": "2024-05-01 10:15:30",
+    "idArticolo": 2
+  }
+]

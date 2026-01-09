@@ -41,12 +41,14 @@ else
     private Messaggio[]? listaMessaggi;
     Messaggio? singoloMessaggio;
     protected override async Task OnInitializedAsync()
-    {        
+    {   
+        
         HttpClient? cl = new HttpClient();
-        //cl.BaseAddress = new Uri("http://localhost:5140");
+        cl.BaseAddress = new Uri("http://localhost:5140");
         cl.BaseAddress = new Uri("http://localhost:8081");
-        //cl.BaseAddress = new Uri("http://localhost:3000");
+        cl.BaseAddress = new Uri("http://localhost:3000");
         singoloMessaggio = await cl.GetFromJsonAsync<Messaggio>("Messaggio/messaggi/2");
         listaMessaggi = await cl.GetFromJsonAsync<Messaggio[]>("Messaggio/MessaggiosList");
+        
     }
 }
