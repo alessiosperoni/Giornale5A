@@ -13,7 +13,7 @@ namespace WebApplicationApi.Data
         private string dataSourceString = @"Data/Source/articoli.json";
         public Articolo CreateArticoli(string titolo,string autore, DateTime Data_pubblicazione)
         {
-            List<Articolo> myList = GetArticoliList();
+            List<Articolo> myList = GetArticolo();
             Articolo ultimo = myList.Last<Articolo>();
             Articolo newArticolo = new Articolo();
             newArticolo.titolo = titolo;
@@ -25,22 +25,22 @@ namespace WebApplicationApi.Data
             mySerializer.Serialize(myStream, myList);
             myStream.Close();
 
-            return newArtist;
+            return newArticolo;
 
         }
 
-        public Artist GetArtist(int Id)
+        public Articolo GetArticolo(int Id)
         {
-            List<Artist> myList = GetArtistsList();
-            return myList.Find(x => x.IdArtist == Id);
+            List<Articolo> myList = GetArticoliList();
+            return myList.Find(x => x.IdArticolo == Id);
 
         }
 
-        public List<Artist> GetArtistsList()
+        public List<Articolo> GetArticoliList()
         {
             JsonSerializer mySerializer = new JsonSerializer();
             StreamReader myStreamreader = File.OpenText(dataSourceString);
-            List<Artist> myList = (List<Artist>)mySerializer.Deserialize(myStreamreader, typeof(List<Artist>));
+            List<Articolo> myList = (List<Articolo>)mySerializer.Deserialize(myStreamreader, typeof(List<Articolo>));
             myStreamreader.Close();
             return myList;
         }
