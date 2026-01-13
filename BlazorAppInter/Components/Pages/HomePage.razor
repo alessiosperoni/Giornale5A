@@ -1,0 +1,107 @@
+﻿@page "/HomePage"
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Il Giornale della 5A</title>
+
+    <style>
+        body {
+            font-family: Britannic;
+            background-color: midnightblue;
+        }
+
+        .menu {
+            background-color: black;
+            text-align: center;
+        }
+
+        .menu a {
+            color: cornflowerblue;
+            text-decoration: none;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+            background-color: black;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid;
+            color: lightgrey;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkgoldenrod;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: azure;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Il Giornale della 5A</h1>
+
+    <table class="menu">
+        <tr>
+            <td><a href="/HomePage">Home</a></td>
+            <td><a href="">Sport</a></td>
+            <td><a href="">Altre News</a></td>
+            <td><a href="">Commenti</a></td>
+        </tr>
+    </table>
+
+    <br>
+
+    
+    <table>
+        <tr>
+            <td>
+                <h2>Notizia Principale</h2>
+                <p>
+                    Testo notizia
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <h2>Notizia</h2>
+                <p>
+                    Forza Juve
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <h2>Pubblicità</h2>
+            </td>
+        </tr>
+    </table>
+
+    <footer>
+        <p>5a Giua</p>
+    </footer>
+
+</body>
+</html>
+
+@code {
+
+}
