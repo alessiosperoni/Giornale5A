@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="C:\Users\riccardo.corbia.s1_g\Desktop\Articolo news.cs" Link="Articolo news.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.5.0" />
   </ItemGroup>
 

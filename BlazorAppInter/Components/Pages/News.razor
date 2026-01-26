@@ -33,5 +33,17 @@ else
             public string autore { get; set; }
             public string testo { get; set; }
         }
+
+    private Articolo[]? listaArticoli;
+    Articolo? singolaNews;
+    protected override async Task OnInitializedAsync()
+    {
+        HttpClient? cl = new HttpClient();
+        cl.BaseAddress = new Uri("http://localhost:5140");
+        //cl.BaseAddress = new Uri("http://localhost:8081");
+        //cl.BaseAddress = new Uri("http://localhost:3000");
+        singoloMessaggio = await cl.GetFromJsonAsync<Articolo>("Messaggio/messaggi/2");
+        listaMessaggi = await cl.GetFromJsonAsync<Articolo[]>("Messaggio/MessaggiosList");
+    }
     }
 }
