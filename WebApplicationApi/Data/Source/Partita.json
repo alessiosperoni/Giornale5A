@@ -1,0 +1,22 @@
+[
+  {
+    "IdPartita": 1,
+    "SquadraCasa": "Missiloni Bomboloni",
+    "SquadraOspite": "Da Selezionare",
+    "Testo": "Capitano: Necche"
+  },
+  {
+    "IdPartita": 2,
+    "SquadraCasa": "Daje Roma",
+    "SquadraOspite": "Da Selezionare",
+    "Testo": "Capitano: Churro Anakin"
+  },
+  {
+    "IdPartita": 3,
+    "SquadraCasa": "Viva la Fix",
+    "SquadraOspite": "Da Selezionare",
+    "Testo": "Capitano: Anthonio Succa"
+  }
+ 
+ 
+]

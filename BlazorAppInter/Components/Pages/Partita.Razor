@@ -1,0 +1,124 @@
+﻿@page "/sport"
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo Calcetto Estivo - Cagliari</title>
+    <!-- Inclusione di un framework CSS leggero (Pico.css) per un design pulito e responsivo -->
+    <link rel="stylesheet" href="cdn.jsdelivr.net">
+    <style>
+        /* Stili personalizzati per questa pagina */
+        header {
+            background-color: #004d99; /* Blu scuro */
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        section {
+            padding: 2rem 0;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Intestazione della pagina -->
+    <header>
+        <h1> Torneo Calcetto Cagliari 2026 </h1>
+        <p>L'evento sportivo dell'estate! Iscriviti ora!</p>
+    </header>
+
+    <main class="container">
+        <!-- Sezione Informazioni Principali -->
+        <section id="info">
+            <h2>Informazioni Chiave</h2>
+            <div class="grid">
+                <article>
+                    <h3> Quando?</h3>
+                    <p>Dal 15 Luglio al 15 Agosto 2026</p>
+                </article>
+                <article>
+                    <h3> Dove?</h3>
+                    <p>Campi Sportivi Via Rossi, Cagliari</p>
+                </article>
+                <article>
+                    <h3> Costo?</h3>
+                    <p>50€ a squadra (iscrizione)</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sezione Squadre Partecipanti (Esempio) -->
+        <section id="squadre">
+            <h2>Squadre in Gara</h2>
+            <div class="grid">
+                <div class="team-card">
+                    <h4>Missiloni Bomboloni</h4>
+                    <p>Capitano: Necche</p>
+                </div>
+                <div class="team-card">
+                    <h4>Daje Roma</h4>
+                    <p>Capitano:Churro Anakin</p>
+                </div>
+                <div class="team-card">
+                    <h4>Viva la Fix</h4>
+                    <p>Capitano: Anthonio Succa</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione Iscrizione (Call to Action) -->
+        <section id="iscrizione">
+            <h2>Non rimanere fuori!</h2>
+            <p>Le iscrizioni chiudono il 10 Luglio. Compila il modulo per assicurarti un posto.</p>
+            <a href="#" role="button">Iscriviti Ora</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Cagliari Sport Events. Contatti: info@torneo.it</p>
+    </footer>
+
+</body>
+</html>
+
+@code {
+
+    private Partita[]? listaPartite;
+
+    Partita? singolaPartita;
+
+    protected override async Task OnInitializedAsync()
+
+    {
+
+        HttpClient? cl = new HttpClient();
+
+        cl.BaseAddress = new Uri("http://localhost:5140");
+
+        //cl.BaseAddress = new Uri("http://localhost:8081");
+
+        //cl.BaseAddress = new Uri("http://localhost:3000");
+
+        singolaPartita = await cl.GetFromJsonAsync<Partita>("Partita/partite/2");
+
+        listaPartite = await cl.GetFromJsonAsync<Partita[]>("Partita/PartitasList");
+
+    }
+}
