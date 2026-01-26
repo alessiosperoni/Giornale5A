@@ -10,8 +10,10 @@ namespace WebApplicationApi.Data
 {
     public class CommentiRepositoryJson : ICommentiRepository
     {
+        // dichiarazione variabile dataSourceString
         private string dataSourceString = @"Data/Source/Commenti.json";
-        public Commento CreateCommento(string Autore, DateTime DataCommento, string Testo) 
+        //Questo metodo crea un nuovo commento, lo aggiunge a una lista e lo salva su file JSON, poi restituisce il commento creato.
+        public Commento CreateCommento(string Autore, DateTime DataCommento, string Testo)
         {
             List<Commento> commenti = GetCommentoList();
             Commento ultimo = commenti.Last<Commento>();
@@ -30,11 +32,13 @@ namespace WebApplicationApi.Data
             return newCommento;
 
         }
+        //Questo metodo cerca e restituisce un commento specifico usando il suo ID.
         public Commento GetCommento(int Id)
         {
             List<Commento> commenti = GetCommentoList();
             return commenti.Find(x => x.idCommento == Id);
         }
+        //Questo metodo legge una lista di commenti da un file JSON e la restituisce come List<Commento>.
         public List<Commento> GetListaCommenti()
         {
             JsonSerializer mySerializer = new JsonSerializer();
@@ -43,6 +47,7 @@ namespace WebApplicationApi.Data
             myStreamreader.Close();
             return myList;
         }
+        //Questo metodo serve a leggere tutti i commenti da un file JSON e restituirli come lista di oggetti Commento.
         public List<Commento> GetCommentoList()
         {
             JsonSerializer mySerializer = new JsonSerializer();
