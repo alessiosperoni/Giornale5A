@@ -1,0 +1,37 @@
+﻿@page "/news"
+@using BlazorAppInter.Models
+
+<h1 style="margin-bottom:20px">Ultime News</h1>
+
+@if (articoli.Count == 0)
+{
+    <p>Non ci sono News</p>
+}
+else
+{
+    @foreach (var articolo in articoli)
+    {
+        <div class="news">
+            <h3>@articolo.titolo</h3>
+            <p style="font-size: 1; color: black;">
+                @articolo.data_Pubblicazione.ToString("dd/MM/yyyy")
+            </p>
+            <p> @articolo.autore</p>
+            <p>@articolo.testo</p>
+        </div>
+    }
+}
+
+@code {
+   
+    namespace BlazorAppInter.Models
+    {
+        public class Articolo
+        {
+            public string titolo { get; set; }
+            public DateTime data_Pubblicazione { get; set; }
+            public string autore { get; set; }
+            public string testo { get; set; }
+        }
+    }
+}
