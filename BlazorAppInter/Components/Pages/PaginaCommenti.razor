@@ -1,0 +1,59 @@
+﻿@page "/Commento"
+@if (ListaCommenti == null)
+{
+    <p><em>Loading ...</em></p>
+        
+}
+else
+{
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id Commento</th>
+                <th>Autore</th>
+                <th>Testo</th>
+                <th>Data</th>
+                <th>Id Articolo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in ListaCommenti)
+            {
+                <tr>
+                    <td>@m.idArticolo</td>
+                    <td>@m.autoreCommento</td>
+                    <td>@m.testoCommento</td>
+                    <td>@m.dataCommento</td>
+                    <td>@m.idArticolo</td>
+                </tr>
+                
+            }
+        </tbody>
+    </table>
+    
+}
+
+@code
+{
+
+    private Commento[] ListaCommenti;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+
+
+        HttpClient? cl = new HttpClient();
+        cl.BaseAddress = new Uri("http://localhost:5140");
+        ListaCommenti = await cl.GetFromJsonAsync<Commento[]>("Comment/CommentiList");
+
+
+        base.OnInitialized();
+    }
+
+    
+
+
+
+}

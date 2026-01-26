@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 // Lifetime consigliato per Web API: Scoped (una istanza per request)
 builder.Services.AddSingleton<IArtistRepository, ArtistRepositoryJson>();
 builder.Services.AddSingleton<IMessaggioRepository, MessaggioRepositoryJson>();
+builder.Services.AddSingleton<ICommentiRepository, CommentiRepositoryJson>();
 
 //builder.Services.AddSingleton<IArtistRepository, ArtistRepositoryMySql>();
 
